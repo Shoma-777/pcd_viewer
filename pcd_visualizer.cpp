@@ -17,7 +17,9 @@ int main (int argc, char** argv) {
     fs::path path = argv[1];
     if (fs::is_directory(path)) {
         BOOST_FOREACH(const fs::path& p, std::make_pair(fs::directory_iterator(path), fs::directory_iterator())) {
-            visualizer.AddGeometry(open3d::io::CreatePointCloudFromFile(fs::absolute(p).c_str()));
+            if(!fs::is_directory(p)) {
+                visualizer.AddGeometry(open3d::io::CreatePointCloudFromFile(fs::absolute(p).c_str()));
+            }
         }
     } else {
         visualizer.AddGeometry(open3d::io::CreatePointCloudFromFile(fs::absolute(path).c_str()));
