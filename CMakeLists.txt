@@ -14,7 +14,7 @@ message(STATUS "Boost_VERSION: ${Boost_VERSION}")
 
 add_executable(
     ${TARGET_NAME}
-    pcd_visualizer.cpp
+    pcd_viewer.cpp
 )
 
 target_link_libraries(
